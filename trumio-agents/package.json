@@ -1,0 +1,97 @@
+{
+  "name": "trumio",
+  "displayName": "trumio",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "CustomContainer",
+          "title": "Trumio Chat Bot",
+          "icon": "media/iconChatBot.svg"
+        },
+        {
+          "id": "MileStoneTrack",
+          "title": "Milestone Tracker",
+          "icon": "media/iconMilestones.svg"
+        }
+      ]
+    },
+    "views": {
+      "CustomContainer": [
+        {
+          "type": "webview",
+          "id": "chatView",
+          "name": "Chat",
+          "canToggleVisibility": true
+        }
+      ],
+      "MileStoneTrack": [
+        {
+          "type": "webview",
+          "id": "mileStoneView",
+          "name": "Milestone Tracker",
+          "canToggleVisibility": true
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "trumio.CodeExplanation",
+        "title": "Code Explanation"
+      },
+      {
+        "command": "trumio.AddComments",
+        "title": "Add Comments"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorTextFocus",
+          "command": "trumio.CodeExplanation",
+          "group": "navigation"
+        },
+        {
+          "when": "editorTextFocus",
+          "command": "trumio.AddComments",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.3",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.84.0",
+    "@vscode/test-electron": "^2.3.6",
+    "eslint": "^8.52.0",
+    "glob": "^10.3.10",
+    "mocha": "^10.2.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cross-fetch": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "node-fetch": "^3.3.2",
+    "openai": "^4.0.0",
+    "react": "^18.2.0"
+  }
+}
